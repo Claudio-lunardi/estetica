@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 800">
+  <rect width="640" height="800" fill="#fff7f9"/>
+  <rect x="72" y="96" width="496" height="608" rx="40" fill="#ffd3dc"/>
+  <circle cx="320" cy="280" r="96" fill="#fff0f4"/>
+  <text x="320" y="620" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="42" fill="#9f4d67">Facial</text>
+</svg>

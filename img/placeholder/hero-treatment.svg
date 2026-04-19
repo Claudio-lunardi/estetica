@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 800">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#fffafc"/>
+      <stop offset="100%" stop-color="#ffccd6"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="800" fill="url(#bg)"/>
+  <circle cx="510" cy="150" r="120" fill="rgba(255,255,255,0.55)"/>
+  <circle cx="170" cy="620" r="150" fill="rgba(255,255,255,0.35)"/>
+  <rect x="118" y="150" width="404" height="500" rx="44" fill="#fff8fa" stroke="#f6c2cf" stroke-width="6"/>
+  <path d="M250 325c22-34 53-51 93-51s71 17 93 51" fill="none" stroke="#9f4d67" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="320" cy="285" r="28" fill="#9f4d67"/>
+  <circle cx="260" cy="368" r="10" fill="#ff85a1"/>
+  <circle cx="320" cy="392" r="10" fill="#ff85a1"/>
+  <circle cx="380" cy="368" r="10" fill="#ff85a1"/>
+  <text x="160" y="715" font-family="Segoe UI, Arial, sans-serif" font-size="38" font-weight="700" fill="#9f4d67">
+    Ritual de autocuidado
+  </text>
+</svg>
