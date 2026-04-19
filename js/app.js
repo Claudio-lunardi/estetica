@@ -1,6 +1,6 @@
 const appData = {
   profile: {
-    name: "Espaco Joyce Arraiss",
+    name: "Espaco Joyce Arrais",
     logoSrc: "assets/brand/logo-ja-mark.png",
     heroImage: "img/services/perfil-joyce-uniforme-02.jpeg",
     aboutImage: "img/services/perfil-joyce-avaliacao-01.jpeg",
@@ -12,38 +12,8 @@ const appData = {
     city: "Avenida Joao Fernandes da Silva, 495 sala 3, Vila Virginia",
     contactIntro: "Escolha o servico, veja os detalhes e fale direto com a Joyce no WhatsApp para tirar duvidas, alinhar o protocolo e agendar.",
     mapEmbedUrl: "https://www.google.com/maps?q=Avenida%20Joao%20Fernandes%20da%20Silva%2C%20495%20sala%203%2C%20Vila%20Virginia&output=embed",
-    heroKicker: "Estetica facial, corporal e maquiagem",
-    heroTitle: "Cuidado profissional para realcar sua beleza com leveza e decisao rapida no celular.",
-    heroDescription: "O site continua simples e direto, mas agora entrega mais presenca visual, leitura melhor no smartphone e um caminho mais curto ate o agendamento.",
-    heroBadges: ["Avaliacao individual", "Fotos reais", "WhatsApp direto"],
-    heroFacts: [
-      {
-        label: "Atendimento",
-        value: "Conversa direta com a profissional para entender o que faz sentido para voce."
-      },
-      {
-        label: "Experiencia",
-        value: "Layout pensado para leitura, toque e decisao no celular sem excesso de informacao."
-      },
-      {
-        label: "Prova visual",
-        value: "Imagens reais dos procedimentos e da profissional para transmitir mais confianca."
-      }
-    ],
-    appointmentSteps: [
-      {
-        title: "Escolha o servico",
-        text: "Abra o procedimento que combina com seu objetivo e veja o resumo sem se perder em textos longos."
-      },
-      {
-        title: "Tire suas duvidas",
-        text: "Use o botao de WhatsApp para enviar uma mensagem pronta e conversar direto com a Joyce."
-      },
-      {
-        title: "Agende com clareza",
-        text: "Defina o melhor horario, entenda a proposta do atendimento e siga para o espaco com mais seguranca."
-      }
-    ],
+    heroKicker: "Estetica, beleza e maquiagem",
+    heroTitleHtml: "Sua <span class=\"hero__headline-accent\">beleza</span> com toque <span class=\"hero__headline-accent\">profissional</span>.",
     experiencePillars: [
       {
         title: "Leitura rapida",
@@ -275,7 +245,7 @@ const appData = {
       title: "Maquiagem Profissional",
       summary: "Producao social para madrinha, debutante e outras ocasioes especiais.",
       image: "img/services/maquiagem-social-04.jpeg",
-      alt: "Maquiagem profissional produzida por Joyce Arraiss",
+      alt: "Maquiagem profissional produzida por Joyce Arrais",
       description: "Maquiagem social com acabamento profissional pensada para valorizar o rosto, o estilo da cliente e a proposta do evento.",
       note: "Atende producoes para madrinha, debutante, ensaios e entre outros momentos especiais.",
       items: ["Acabamento profissional", "Eventos", "Madrinha", "Debutante", "Entre outros"],
@@ -288,7 +258,7 @@ const appData = {
     }
   ],
   socialLinks: [
-    { label: "Instagram", href: "https://instagram.com/joycearraiss" },
+    { label: "Instagram", href: "https://www.instagram.com/joycearraiss_estetica?igsh=NGdnOTh2ejMxOXht" },
     { label: "WhatsApp", href: "https://wa.me/5511999187997" }
   ]
 };
@@ -308,11 +278,6 @@ const app = Vue.createApp({
       ...appData,
       isMenuOpen: false
     };
-  },
-  computed: {
-    serviceCategories() {
-      return [...new Set(this.services.map((service) => service.category))];
-    }
   },
   mounted() {
     this.installEnhancements();
@@ -362,18 +327,15 @@ const app = Vue.createApp({
       <header-component
         :profile="profile"
         :navigation="navigation"
+        :social-links="socialLinks"
         :is-menu-open="isMenuOpen"
         @toggle-menu="toggleMenu"
         @navigate="navigateTo"
       />
 
       <main>
-        <hero-component :profile="profile" :service-categories="serviceCategories" />
-        <services-component
-          :profile="profile"
-          :services="services"
-          :service-categories="serviceCategories"
-        />
+        <hero-component :profile="profile" />
+        <services-component :profile="profile" :services="services" />
         <about-component :profile="profile" />
         <contact-component :profile="profile" :social-links="socialLinks" />
       </main>
