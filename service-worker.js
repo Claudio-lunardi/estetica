@@ -1,4 +1,4 @@
-const CACHE_NAME = "joyce-arraiss-v7";
+const CACHE_NAME = "joyce-arraiss-v9";
 const CORE_ASSETS = [
   "./",
   "index.html",

@@ -1,11 +1,11 @@
 {
   "name": "Estetica Joyce Arraiss",
   "short_name": "Joyce Arraiss",
-  "description": "Landing page mobile-first para clinica de estetica com acesso rapido via WhatsApp.",
+  "description": "Landing page mobile-first para espaco de estetica com fotos reais, leitura clara e agendamento rapido via WhatsApp.",
   "start_url": "./",
   "display": "standalone",
-  "background_color": "#fff3f6",
-  "theme_color": "#ffb6c1",
+  "background_color": "#fff7f8",
+  "theme_color": "#d8899f",
   "icons": [
     {
       "src": "assets/icons/touch-icon.svg",

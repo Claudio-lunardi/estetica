@@ -20,7 +20,17 @@ window.setupRevealAnimations = function setupRevealAnimations() {
     });
   }, { threshold: 0.18 });
 
-  items.forEach((item) => observer.observe(item));
+  items.forEach((item) => {
+    const rect = item.getBoundingClientRect();
+    const isInitiallyVisible = rect.top < window.innerHeight * 0.92 && rect.bottom > 0;
+
+    if (isInitiallyVisible) {
+      item.classList.add("is-visible");
+      return;
+    }
+
+    observer.observe(item);
+  });
 };
 
 window.lockScroll = function lockScroll(shouldLock) {

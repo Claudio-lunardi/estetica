@@ -1,7 +1,8 @@
 window.ServicesComponent = {
   props: {
     profile: { type: Object, required: true },
-    services: { type: Array, required: true }
+    services: { type: Array, required: true },
+    serviceCategories: { type: Array, required: true }
   },
   data() {
     return {
@@ -14,9 +15,6 @@ window.ServicesComponent = {
     };
   },
   computed: {
-    whatsappLink() {
-      return window.createWhatsAppLink(this.profile.whatsappNumber, this.profile.whatsappMessage);
-    },
     isLightboxOpen() {
       return this.lightbox.serviceIndex !== null;
     },
@@ -82,6 +80,10 @@ window.ServicesComponent = {
     },
     setPhoto(index, photoIndex) {
       this.photoIndexes = { ...this.photoIndexes, [index]: photoIndex };
+    },
+    serviceWhatsAppLink(service) {
+      const message = `Ola! Vi o servico ${service.title} no site e gostaria de mais informacoes.`;
+      return window.createWhatsAppLink(this.profile.whatsappNumber, message);
     },
     openLightbox(serviceIndex, photoIndex) {
       this.lightbox = { serviceIndex, photoIndex };
@@ -155,11 +157,26 @@ window.ServicesComponent = {
       <div class="container">
         <div class="section-heading fade-up">
           <span class="section-kicker">Servicos</span>
-          <h2>Toque no servico para ver fotos, entender como funciona e falar com a Joyce.</h2>
+          <h2>Escolha o cuidado ideal para seu momento sem perder tempo com excesso de informacao.</h2>
           <p>
-            Cada item abre sozinho para manter a tela limpa no celular e mostrar apenas o
-            que a cliente precisa saber antes de chamar no WhatsApp.
+            Os protocolos seguem a mesma ideia do site original, mas com leitura mais clara, visual
+            mais forte e CTAs melhores para converter no celular.
           </p>
+        </div>
+
+        <div class="services-overview card fade-up">
+          <p class="services-overview__lead">
+            Toque no servico, veja imagens reais, entenda a proposta e abra a conversa com uma mensagem pronta no WhatsApp.
+          </p>
+
+          <div class="services-overview__meta">
+            <ul class="pill-list">
+              <li v-for="category in serviceCategories" :key="category">{{ category }}</li>
+            </ul>
+            <p class="services-overview__hint">
+              A organizacao por categoria ajuda a comparar opcoes mais rapido em telas pequenas.
+            </p>
+          </div>
         </div>
 
         <div class="services-accordion fade-up">
@@ -259,17 +276,33 @@ window.ServicesComponent = {
                 </div>
               </div>
 
-              <span class="section-kicker">{{ service.category }}</span>
-              <p>{{ service.description }}</p>
-              <p class="muted">{{ service.note }}</p>
+              <div class="service-accordion__content">
+                <span class="service-accordion__eyebrow">{{ service.category }}</span>
+                <p>{{ service.description }}</p>
+
+                <div class="service-accordion__tip">
+                  <strong>Bom para lembrar</strong>
+                  <p>{{ service.note }}</p>
+                </div>
+              </div>
 
               <ul class="pill-list">
                 <li v-for="item in service.items" :key="item">{{ item }}</li>
               </ul>
 
-              <a class="button service-accordion__cta" :href="whatsappLink" target="_blank" rel="noreferrer">
-                Pedir informacoes no WhatsApp
-              </a>
+              <div class="service-accordion__actions">
+                <a
+                  class="button service-accordion__cta"
+                  :href="serviceWhatsAppLink(service)"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Quero saber sobre {{ service.title }}
+                </a>
+                <p class="service-accordion__cta-note muted">
+                  O botao ja abre a conversa com uma mensagem pronta para este servico.
+                </p>
+              </div>
             </div>
             </article>
           </template>

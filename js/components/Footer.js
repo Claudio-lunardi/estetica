@@ -10,7 +10,7 @@ window.FooterComponent = {
         <div>
           <h3>{{ profile.name }}</h3>
           <p class="muted">
-            Site de servicos com identidade da marca, fotos reais e contato rapido.
+            Estetica facial, corporal e maquiagem com identidade delicada, fotos reais e contato rapido pelo WhatsApp.
           </p>
         </div>
 
@@ -26,6 +26,7 @@ window.FooterComponent = {
           <p class="footer-meta" v-for="item in socialLinks" :key="item.label">
             <a :href="item.href" target="_blank" rel="noreferrer">{{ item.label }}</a>
           </p>
+          <p class="footer-meta">{{ profile.phoneDisplay }}</p>
           <p class="footer-meta">{{ new Date().getFullYear() }} {{ profile.name }}</p>
         </div>
       </div>

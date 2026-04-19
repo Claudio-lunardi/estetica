@@ -10,8 +10,74 @@ const appData = {
     phoneDisplay: "(11) 99918-7997",
     email: "joycearrais2001.ja@gmail.com",
     city: "Avenida Joao Fernandes da Silva, 495 sala 3, Vila Virginia",
-    contactIntro: "Escolha o servico, veja os detalhes e fale direto no WhatsApp para tirar duvidas ou agendar.",
-    mapEmbedUrl: "https://www.google.com/maps?q=Avenida%20Joao%20Fernandes%20da%20Silva%2C%20495%20sala%203%2C%20Vila%20Virginia&output=embed"
+    contactIntro: "Escolha o servico, veja os detalhes e fale direto com a Joyce no WhatsApp para tirar duvidas, alinhar o protocolo e agendar.",
+    mapEmbedUrl: "https://www.google.com/maps?q=Avenida%20Joao%20Fernandes%20da%20Silva%2C%20495%20sala%203%2C%20Vila%20Virginia&output=embed",
+    heroKicker: "Estetica facial, corporal e maquiagem",
+    heroTitle: "Cuidado profissional para realcar sua beleza com leveza e decisao rapida no celular.",
+    heroDescription: "O site continua simples e direto, mas agora entrega mais presenca visual, leitura melhor no smartphone e um caminho mais curto ate o agendamento.",
+    heroBadges: ["Avaliacao individual", "Fotos reais", "WhatsApp direto"],
+    heroFacts: [
+      {
+        label: "Atendimento",
+        value: "Conversa direta com a profissional para entender o que faz sentido para voce."
+      },
+      {
+        label: "Experiencia",
+        value: "Layout pensado para leitura, toque e decisao no celular sem excesso de informacao."
+      },
+      {
+        label: "Prova visual",
+        value: "Imagens reais dos procedimentos e da profissional para transmitir mais confianca."
+      }
+    ],
+    appointmentSteps: [
+      {
+        title: "Escolha o servico",
+        text: "Abra o procedimento que combina com seu objetivo e veja o resumo sem se perder em textos longos."
+      },
+      {
+        title: "Tire suas duvidas",
+        text: "Use o botao de WhatsApp para enviar uma mensagem pronta e conversar direto com a Joyce."
+      },
+      {
+        title: "Agende com clareza",
+        text: "Defina o melhor horario, entenda a proposta do atendimento e siga para o espaco com mais seguranca."
+      }
+    ],
+    experiencePillars: [
+      {
+        title: "Leitura rapida",
+        text: "A primeira tela mostra o valor da marca, os CTAs principais e o que a cliente pode esperar do atendimento."
+      },
+      {
+        title: "Prova visual",
+        text: "As fotos reais ajudam a comparar servicos e reforcam a identidade delicada do espaco."
+      },
+      {
+        title: "Decisao sem atrito",
+        text: "Os botoes de contato ficam sempre perto para transformar interesse em conversa com menos esforco."
+      }
+    ],
+    differentials: [
+      "Avaliacao inicial para indicar o protocolo mais adequado ao objetivo da cliente.",
+      "Fluxo objetivo para quem chega pelo celular e quer decidir sem confusao.",
+      "Fotos reais dos procedimentos e do atendimento para gerar mais confianca.",
+      "Contato direto com a profissional para alinhar expectativa, cuidados e agenda."
+    ],
+    contactHighlights: [
+      {
+        label: "WhatsApp direto",
+        value: "O caminho principal do site ja abre a conversa com uma mensagem pronta."
+      },
+      {
+        label: "Atendimento individual",
+        value: "A escolha do protocolo acontece com orientacao da profissional e mais contexto."
+      },
+      {
+        label: "Localizacao integrada",
+        value: "Endereco e mapa ficam no mesmo bloco para facilitar a chegada ao espaco."
+      }
+    ]
   },
   navigation: [
     { label: "Inicio", href: "#top" },
@@ -243,6 +309,11 @@ const app = Vue.createApp({
       isMenuOpen: false
     };
   },
+  computed: {
+    serviceCategories() {
+      return [...new Set(this.services.map((service) => service.category))];
+    }
+  },
   mounted() {
     this.installEnhancements();
 
@@ -297,8 +368,12 @@ const app = Vue.createApp({
       />
 
       <main>
-        <hero-component :profile="profile" />
-        <services-component :profile="profile" :services="services" />
+        <hero-component :profile="profile" :service-categories="serviceCategories" />
+        <services-component
+          :profile="profile"
+          :services="services"
+          :service-categories="serviceCategories"
+        />
         <about-component :profile="profile" />
         <contact-component :profile="profile" :social-links="socialLinks" />
       </main>
